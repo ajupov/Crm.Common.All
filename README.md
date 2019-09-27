@@ -16,3 +16,6 @@ All common packages for Crm backend application.
 
 ##### Manage tokens
 https://github.com/settings/tokens
+
+##### Nuget.exe
+https://www.nuget.org/downloads

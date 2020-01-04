@@ -16,9 +16,9 @@ namespace Crm.Common.All.UserContext
             AccountId = Guid.NewGuid();
             Name = Guid.NewGuid().ToString();
             AvatarUrl = Guid.NewGuid().ToString();
-            Permissions = new List<Permission>
+            Roles = new List<Role>
             {
-                Permission.Administration
+                Role.Administration
             };
         }
 
@@ -30,23 +30,23 @@ namespace Crm.Common.All.UserContext
 
         public string AvatarUrl { get; }
 
-        public List<Permission> Permissions { get; }
+        public List<Role> Roles { get; }
 
-        public bool HasAny(params Permission[] permissions)
+        public bool HasAny(params Role[] permissions)
         {
-            return permissions.Intersect(Permissions).Any();
+            return permissions.Intersect(Roles).Any();
         }
 
-        public bool HasAll(params Permission[] permissions)
+        public bool HasAll(params Role[] permissions)
         {
-            return !permissions.Except(Permissions).Any();
+            return !permissions.Except(Roles).Any();
         }
 
         public bool Belongs(IEnumerable<Guid> accountIds)
         {
             return accountIds.All(x => x == AccountId);
         }
-        
+
         public bool Belongs(params Guid[] accountIds)
         {
             return accountIds.All(x => x == AccountId);

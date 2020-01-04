@@ -4,7 +4,7 @@ namespace Crm.Common.All.UserContext.Attributes
 {
     public class RequireAllAttribute : Attribute
     {
-        public RequireAllAttribute(params Permission[] permissions)
+        public RequireAllAttribute(params Role[] roles)
         {
         }
     }

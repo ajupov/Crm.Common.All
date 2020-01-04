@@ -1,6 +1,6 @@
 ﻿namespace Crm.Common.All.UserContext
 {
-    public enum Permission : byte
+    public enum Role : byte
     {
         System = 1,
         Development = 2,
@@ -10,6 +10,5 @@
         ProductsManagement = 6,
         LeadsManagement = 7,
         SalesManagement = 8,
-        DemoViewing = 9
     }
 }

@@ -16,6 +16,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             _userContext = userContext;
         }
 
+        [NonAction]
         public async Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
             Role[] nonPrivilegedRoles,
@@ -43,6 +44,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             throw new Exception();
         }
 
+        [NonAction]
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
             Role[] nonPrivilegedRoles,
@@ -59,6 +61,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             return ActionIfAllowed(action, new[] {nonPrivilegedRole}, accountIds);
         }
 
+        [NonAction]
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
             Role nonPrivilegedRole,
@@ -67,6 +70,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             return ActionIfAllowed(action, new[] {nonPrivilegedRole}, accountIds);
         }
 
+        [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
             Role[] nonPrivilegedRoles,
@@ -90,6 +94,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             throw new Exception();
         }
 
+        [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
             Role nonPrivilegedRole,
@@ -98,6 +103,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             return ReturnIfAllowed(result, new[] {nonPrivilegedRole}, accountIds.ToArray());
         }
 
+        [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
             Role nonPrivilegedRole,
@@ -106,6 +112,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             return ReturnIfAllowed(result, new[] {nonPrivilegedRole}, accountIds);
         }
 
+        [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
             Role[] nonPrivilegedRoles,

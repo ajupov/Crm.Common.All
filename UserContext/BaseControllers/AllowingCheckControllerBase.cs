@@ -53,6 +53,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
             return ActionIfAllowed(action, nonPrivilegedRoles, accountIds.ToArray());
         }
 
+        [NonAction]
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
             Role nonPrivilegedRole,

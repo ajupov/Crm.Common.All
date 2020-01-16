@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Crm.Common.All.UserContext
 {
@@ -9,18 +10,10 @@ namespace Crm.Common.All.UserContext
 
         Guid AccountId { get; }
 
-        string Name { get; }
+        List<string> Roles { get; }
 
-        string AvatarUrl { get; }
+        bool HasRoles(params string[] roles) => roles.Intersect(Roles).Any();
 
-        List<Role> Roles { get; }
-
-        bool HasAny(params Role[] permissions);
-
-        bool HasAll(params Role[] permissions);
-
-        bool Belongs(IEnumerable<Guid> accountIds);
-        
-        bool Belongs(params Guid[] accountIds);
+        bool Belongs(IEnumerable<Guid> accountIds) => accountIds.All(x => x == AccountId);
     }
 }

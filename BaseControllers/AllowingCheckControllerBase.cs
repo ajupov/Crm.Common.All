@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Crm.Common.All.UserContext.Attributes;
+using Crm.Common.All.UserContext;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crm.Common.All.UserContext.BaseControllers
+namespace Crm.Common.All.BaseControllers
 {
     public class AllowingCheckControllerBase : ControllerBase
     {
@@ -19,24 +19,24 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public async Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
-            Role[] nonPrivilegedRoles,
+            string[] nonPrivilegedRoles,
             params Guid[] accountIds)
         {
-            if (_userContext.HasAny(RequirePrivilegedAttribute.PrivilegedRoles))
+            if (_userContext.HasRoles(Roles.Roles.Privileged))
             {
                 await action();
 
                 return NoContent();
             }
 
-            if (_userContext.HasAny(nonPrivilegedRoles) && _userContext.Belongs(accountIds))
+            if (_userContext.HasRoles(nonPrivilegedRoles) && _userContext.Belongs(accountIds))
             {
                 await action();
 
                 return NoContent();
             }
 
-            if (_userContext.HasAny(Role.AccountOwning) && !_userContext.Belongs(accountIds))
+            if (_userContext.HasRoles(nonPrivilegedRoles) && !_userContext.Belongs(accountIds))
             {
                 return Forbid();
             }
@@ -47,7 +47,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
-            Role[] nonPrivilegedRoles,
+            string[] nonPrivilegedRoles,
             IEnumerable<Guid> accountIds)
         {
             return ActionIfAllowed(action, nonPrivilegedRoles, accountIds.ToArray());
@@ -55,7 +55,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
 
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
-            Role nonPrivilegedRole,
+            string nonPrivilegedRole,
             params Guid[] accountIds)
         {
             return ActionIfAllowed(action, new[] {nonPrivilegedRole}, accountIds);
@@ -64,7 +64,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public Task<ActionResult> ActionIfAllowed(
             Func<Task> action,
-            Role nonPrivilegedRole,
+            string nonPrivilegedRole,
             IEnumerable<Guid> accountIds)
         {
             return ActionIfAllowed(action, new[] {nonPrivilegedRole}, accountIds);
@@ -73,20 +73,20 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
-            Role[] nonPrivilegedRoles,
+            string[] nonPrivilegedRoles,
             params Guid[] accountIds)
         {
-            if (_userContext.HasAny(RequirePrivilegedAttribute.PrivilegedRoles))
+            if (_userContext.HasRoles(Roles.Roles.Privileged))
             {
                 return result;
             }
 
-            if (_userContext.HasAny(nonPrivilegedRoles) && _userContext.Belongs(accountIds))
+            if (_userContext.HasRoles(nonPrivilegedRoles) && _userContext.Belongs(accountIds))
             {
                 return result;
             }
 
-            if (_userContext.HasAny(nonPrivilegedRoles) && !_userContext.Belongs(accountIds))
+            if (_userContext.HasRoles(nonPrivilegedRoles) && !_userContext.Belongs(accountIds))
             {
                 return Forbid();
             }
@@ -97,7 +97,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
-            Role nonPrivilegedRole,
+            string nonPrivilegedRole,
             IEnumerable<Guid> accountIds)
         {
             return ReturnIfAllowed(result, new[] {nonPrivilegedRole}, accountIds.ToArray());
@@ -106,7 +106,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
-            Role nonPrivilegedRole,
+            string nonPrivilegedRole,
             params Guid[] accountIds)
         {
             return ReturnIfAllowed(result, new[] {nonPrivilegedRole}, accountIds);
@@ -115,7 +115,7 @@ namespace Crm.Common.All.UserContext.BaseControllers
         [NonAction]
         public ActionResult<TResult> ReturnIfAllowed<TResult>(
             TResult result,
-            Role[] nonPrivilegedRoles,
+            string[] nonPrivilegedRoles,
             IEnumerable<Guid> accountIds)
         {
             return ReturnIfAllowed(result, nonPrivilegedRoles, accountIds.ToArray());

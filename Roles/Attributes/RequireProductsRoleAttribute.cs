@@ -1,15 +1,14 @@
-﻿using Ajupov.Infrastructure.All.Jwt;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Crm.Common.All.Roles.Attributes
 {
     public class RequireProductsRoleAttribute : AuthorizeAttribute
     {
-        public RequireProductsRoleAttribute()
+        public RequireProductsRoleAttribute(string oauthAuthenticationScheme)
         {
             Roles = Common.All.Roles.Roles.Products;
-            AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},{JwtDefaults.AuthenticationScheme}";
+            AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},{oauthAuthenticationScheme}";
         }
     }
 }

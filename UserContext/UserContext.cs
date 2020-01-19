@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using Ajupov.Infrastructure.All.Jwt;
 using Microsoft.AspNetCore.Http;
 
 namespace Crm.Common.All.UserContext
@@ -12,7 +11,7 @@ namespace Crm.Common.All.UserContext
         public UserContext(IHttpContextAccessor httpContextAccessor)
         {
             var id = httpContextAccessor.HttpContext.User.Claims
-                .FirstOrDefault(x => x.Type == JwtDefaults.IdentifierClaimType || x.Type == ClaimTypes.NameIdentifier)?
+                .FirstOrDefault(x => x.Type == "id" || x.Type == ClaimTypes.NameIdentifier)?
                 .Value;
 
             if (Guid.TryParse(id, out var parsedId))

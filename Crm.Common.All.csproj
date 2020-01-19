@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <PackageVersion>1.1.1</PackageVersion>
+        <PackageVersion>1.2.0</PackageVersion>
         <Authors>U. Ajupov</Authors>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5"/>
+        <PackageReference Include="Ajupov.Infrastructure.All" Version="1.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>
 </Project>

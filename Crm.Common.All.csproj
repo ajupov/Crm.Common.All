@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <PackageVersion>1.2.4</PackageVersion>
+        <PackageVersion>1.2.5</PackageVersion>
         <Authors>U. Ajupov</Authors>
-        <RepositoryUrl>https://github.com/ajupov/Crm.v1.Clients.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/ajupov/Crm.Common.All.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <NoWarn>SA0001;SA1003;SA1009;SA1012;SA1013;SA1101;SA1116;SA1117;SA1200;SA1309;SA1413;SA1600;SA1633</NoWarn>
     </PropertyGroup>

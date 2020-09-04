@@ -3,8 +3,8 @@
 All common packages for Crm backend application.
 
 ## Usage
-Add nuget source: `nuget sources add -name GPR -Source https://nuget.pkg.github.com/ajupov`
-Install package: `nuget install Crm.Common.All`
+1. Add nuget source: `nuget sources add -name GPR -Source https://nuget.pkg.github.com/ajupov`
+2. Install package: `nuget install Crm.Common.All`
 
 ## Development
 1. Clone this repository

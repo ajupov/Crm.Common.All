@@ -1,6 +1,5 @@
 # Crm.Common.All
-
-All common packages for Crm backend application.
+All common packages for [Lite CRM](https://litecrm.org) backend application
 
 ## Usage
 1. Add nuget source: `nuget sources add -name GPR -Source https://nuget.pkg.github.com/ajupov`

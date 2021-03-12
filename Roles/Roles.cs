@@ -10,13 +10,21 @@
 
         public const string Support = "Support";
 
-        public const string Profile = "Profile";
+        public const string Account = "Account";
+
+        public const string User = "User";
 
         public const string Products = "Products";
 
         public const string Leads = "Leads";
 
-        public const string Sales = "Sales";
+        public const string Companies = "Companies";
+
+        public const string Contacts = "Contacts";
+
+        public const string Deals = "Deals";
+
+        public const string Activities = "Activities";
 
         public static string[] Privileged = {System, Development, Administration, Support};
     }

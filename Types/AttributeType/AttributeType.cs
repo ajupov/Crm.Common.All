@@ -2,7 +2,7 @@
 {
     public enum AttributeType : byte
     {
-        // Tag = 1,
+        Tag = 1,
         Bool = 2,
         // Byte = 3,
         // Short = 4,
@@ -12,7 +12,7 @@
         Long = 8,
         // UnsignedLong = 9,
         Decimal = 10,
-        Single = 11,
+        // Single = 11,
         Double = 12,
         Date = 20,
         Time = 21,

@@ -19,7 +19,7 @@ namespace Crm.Common.All.UserContext
                 UserId = parsedId;
             }
 
-            Roles = httpContextAccessor.HttpContext.User.Claims?
+            Roles = httpContextAccessor.HttpContext.User.Claims
                 .Where(x => x.Type == ClaimTypes.Role)
                 .Select(x => x.Value)
                 .ToList();

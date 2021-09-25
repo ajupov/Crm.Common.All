@@ -16,16 +16,12 @@
 
         public const string Products = "Products";
 
-        public const string Leads = "Leads";
+        public const string Customers = "Customers";
 
-        public const string Companies = "Companies";
+        public const string Orders = "Orders";
 
-        public const string Contacts = "Contacts";
+        public const string Tasks = "Tasks";
 
-        public const string Deals = "Deals";
-
-        public const string Activities = "Activities";
-
-        public static string[] Privileged = {System, Development, Administration, Support};
+        public static string[] Privileged = { System, Development, Administration, Support };
     }
 }

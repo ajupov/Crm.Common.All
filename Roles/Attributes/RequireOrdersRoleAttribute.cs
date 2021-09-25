@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Crm.Common.All.Roles.Attributes
 {
-    public class RequireLeadsRoleAttribute : AuthorizeAttribute
+    public class RequireOrdersRoleAttribute : AuthorizeAttribute
     {
-        public RequireLeadsRoleAttribute(string oauthAuthenticationScheme)
+        public RequireOrdersRoleAttribute(string oauthAuthenticationScheme)
         {
-            Roles = Common.All.Roles.Roles.Leads;
+            Roles = Common.All.Roles.Roles.Orders;
             AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},{oauthAuthenticationScheme}";
         }
     }

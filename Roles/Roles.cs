@@ -22,6 +22,10 @@
 
         public const string Tasks = "Tasks";
 
+        public const string Suppliers = "Suppliers";
+
+        public const string Stock = "Stock";
+
         public static string[] Privileged = { System, Development, Administration, Support };
     }
 }
